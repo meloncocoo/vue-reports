@@ -1,7 +1,8 @@
 <template>
   <div id="app">
     <nprogress-container></nprogress-container>
-    <!-- <navbar :show="true"></navbar>
+    <navbar :show="true"></navbar>
+    <!-- 
     <sidebar :show="sidebar.opened && !sidebar.hidden"></sidebar>
     <footer-bar></footer-bar> -->
     <app-main></app-main>
@@ -10,12 +11,12 @@
 
 <script>
 import NprogressContainer from 'vue-nprogress/src/NprogressContainer'
-import { AppMain } from 'components/layout/'
+import { Navbar, AppMain } from 'components/layout/'
 import { mapGetters, mapActions } from 'vuex'
 
 export default {
   components: {
-    // Navbar,
+    Navbar,
     // Sidebar,
     AppMain,
     // FooterBar,
