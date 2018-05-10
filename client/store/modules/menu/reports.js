@@ -1,7 +1,7 @@
 import lazyLoading from './lazyLoading'
 
 export default {
-  name: 'Reports',
+  name: '报表',
   path: '/reports',
   meta: {
     icon: 'fa-bar-chart',
@@ -12,7 +12,7 @@ export default {
 
   children: [
     {
-      name: 'Designer',
+      name: '设计器',
       path: 'designer',
       component: lazyLoading('reports/Designer'),
       meta: {
