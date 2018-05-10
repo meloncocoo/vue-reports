@@ -106,7 +106,7 @@ export default {
     }
 
     li a + ul {
-      margin: 0 10px 0 15px;
+      margin: 0 0px 0 15px;
     }
   }
 
