@@ -1,27 +1,10 @@
 <template>
   <section class="hero is-bold app-navbar animated" :class="{ slideInDown: show, slideOutDown: !show }">
     <div class="hero-head">
-      <!-- <nav class="nav">
-        <div class="nav-left">
-          <a class="nav-item is-hidden-tablet" @click="toggleSidebar({opened: !sidebar.opened})">
-            <i class="fa fa-bars" aria-hidden="true" v-show="!sidebar.hidden"></i>
-          </a>
-        </div>
-        <div class="nav-center">
-          <a class="nav-item hero-brand" href="/">
-            <img src="~assets/logo.svg" :alt="pkginfo.description" height="28" />
-          </a>
-        </div>
-        <div class="nav-right is-flex">
-          <router-link v-if="!$auth.check()" to="/login" class="nav-item">Login</router-link>
-          <a v-if="$auth.check()" @click="logout" class="nav-item">Logout</a>
-        </div>
-      </nav> -->
-
-      <nav class="navbar is-transparent">
+      <nav class="navbar app-navbar is-transparent">
         <div class="navbar-brand">
           <a class="navbar-item" href="/">
-            <img src="~assets/logo.svg" alt="Bulma: a modern CSS framework based on Flexbox" width="auto" height="28">
+            <img src="~assets/logo.svg" alt="Bulma: a modern CSS framework based on Flexbox" width="auto" height="26">
             <span>{{ pkginfo.description }}</span>
           </a>
           <div class="navbar-burger burger" v-bind:class="{'is-active': menuActived}" @click="menuActived = !menuActived">
@@ -106,6 +89,7 @@ export default {
   position: fixed;
   min-width: 100%;
   z-index: 1024;
+  background-color: #fff;
   box-shadow: 0 2px 3px rgba(17, 17, 17, 0.1), 0 0 0 1px rgba(17, 17, 17, 0.1);
 
   .container {
