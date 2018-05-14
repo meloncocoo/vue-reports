@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="tile is-ancestor">
+    <div class="tile is-ancestor is-loading">
       <div class="tile is-parent">
         <article class="tile is-child box">
           <nav class="level">
@@ -12,12 +12,12 @@
             <div class="level-right">
               <div class="level-item">
                 <div class="control has-addons is-right">
-                  <a class="button is-primary">
+                  <router-link :to="'add'" class="button is-primary is-small">
                     <span class="icon is-small">
                       <i class="fa fa-plus"></i>
                     </span>
                     <span>新建</span>
-                  </a>
+                  </router-link>
                 </div>
               </div>
             </div>
@@ -35,29 +35,16 @@
                 </tr>
               </thead>
               <tbody>
-                <tr>
-                  <td>1</td>
-                  <td>报表1</td>
-                  <td>张三</td>
-                  <td>2018/05/08</td>
-                  <td><span class="tag is-info">草稿</span></td>
+                <tr v-for="(report, index) in reports" :key="'report-' + index">
+                  <td>{{ index + 1 }}</td>
+                  <td>{{ report.name }}</td>
+                  <td>{{ report.createBy }}</td>
+                  <td>{{ report.createDate }}</td>
                   <td>
-                    <a class="button is-small is-primary">
-                      <span class="icon is-small"><i class="fa fa-edit"></i></span>
-                      <span>编辑</span>
-                    </a>
-                    <a class="button is-small is-danger">
-                      <span class="icon is-small"><i class="fa fa-times"></i></span>
-                      <span>删除</span>
-                    </a>
+                    <span class="tag" :class="[ report.status === 0 ? 'is-info' : report.status === 1 ? 'is-warning' : '' ]">
+                    {{ report.status === 0 ? '草稿' : report.status === 1 ? '已发布' : '' }}
+                    </span>
                   </td>
-                </tr>
-                <tr>
-                  <td>2</td>
-                  <td>报表2</td>
-                  <td>李四</td>
-                  <td>2018/05/08</td>
-                  <td><span class="tag is-info">草稿</span></td>
                   <td>
                     <a class="button is-small is-primary">
                       <span class="icon is-small"><i class="fa fa-edit"></i></span>
@@ -72,24 +59,35 @@
               </tbody>
             </table>
             <nav class="pagination is-right is-small" role="navigation" aria-label="pagination">
-  <a class="pagination-previous">Previous</a>
-  <a class="pagination-next">Next page</a>
-  <ul class="pagination-list">
-    <li><a class="pagination-link" aria-label="Goto page 1">1</a></li>
-    <li><span class="pagination-ellipsis">&hellip;</span></li>
-    <li><a class="pagination-link" aria-label="Goto page 45">45</a></li>
-    <li><a class="pagination-link is-current" aria-label="Page 46" aria-current="page">46</a></li>
-    <li><a class="pagination-link" aria-label="Goto page 47">47</a></li>
-    <li><span class="pagination-ellipsis">&hellip;</span></li>
-    <li><a class="pagination-link" aria-label="Goto page 86">86</a></li>
-  </ul>
-</nav>
+              <a class="pagination-previous">Previous</a>
+              <a class="pagination-next">Next page</a>
+              <ul class="pagination-list">
+                <li><a class="pagination-link" aria-label="Goto page 1">1</a></li>
+                <li><span class="pagination-ellipsis">&hellip;</span></li>
+                <li><a class="pagination-link" aria-label="Goto page 45">45</a></li>
+                <li><a class="pagination-link is-current" aria-label="Page 46" aria-current="page">46</a></li>
+                <li><a class="pagination-link" aria-label="Goto page 47">47</a></li>
+                <li><span class="pagination-ellipsis">&hellip;</span></li>
+                <li><a class="pagination-link" aria-label="Goto page 86">86</a></li>
+              </ul>
+            </nav>
           </div>
         </article>
       </div>
     </div>
   </div>
 </template>
+
+<script>
+import { mapGetters } from 'vuex'
+
+export default {
+  computed: mapGetters({
+    reports: 'reports'
+  })
+}
+</script>
+
 
 <style lang="scss">
 
