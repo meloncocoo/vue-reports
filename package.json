@@ -3,12 +3,11 @@
   "version": "0.1.0",
   "description": "Vue Reports Framework",
   "repository": "",
-  "homepage": "",
   "license": "MIT",
   "author": {
     "name": "Melon",
     "email": "meloncocoo@gmail.com",
-    "url": "meloncocoo.com"
+    "url": "http://meloncocoo.com"
   },
   "keywords": [
     "report",
