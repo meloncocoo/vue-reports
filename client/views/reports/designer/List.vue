@@ -12,7 +12,7 @@
             <div class="level-right">
               <div class="level-item">
                 <div class="control has-addons is-right">
-                  <router-link :to="'add'" class="button is-primary is-small">
+                  <router-link :to="'add'" class="button is-primary is-small is-outlined">
                     <span class="icon is-small">
                       <i class="fa fa-plus"></i>
                     </span>
@@ -47,13 +47,13 @@
                     </span>
                   </td>
                   <td class="has-text-centered">
-                    <router-link :to="{ name: 'Edit', params: { id: report.id } }" class="button is-small is-primary">
+                    <router-link :to="{ name: 'Edit', params: { id: report.id } }" class="button is-small is-primary is-outlined">
                       <span class="icon is-small"><i class="fa fa-edit"></i></span>
                       <span>编辑</span>
                     </router-link>
                   </td>
                   <td class="has-text-centered">
-                    <button class="button is-small is-danger" @click="deleteReport(report)">
+                    <button class="button is-small is-danger is-outlined" @click="deleteReport(report)">
                       <span class="icon is-small"><i class="fa fa-times"></i></span>
                       <span>删除</span>
                     </button>

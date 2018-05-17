@@ -1,4 +1,5 @@
 import moment from 'moment'
+import conditions from './conditions'
 
 const state = {
   items: [
@@ -53,9 +54,15 @@ const getters = {
   }
 }
 
+const modules = {
+  conditions: conditions
+}
+
 export default {
+  namespace: true,
   state,
   mutations,
   actions,
-  getters
+  getters,
+  modules
 }

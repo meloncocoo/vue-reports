@@ -1,6 +1,6 @@
 import * as types from '../../mutation-types'
 import lazyLoading from './lazyLoading'
-// import charts from './charts'
+import charts from './charts'
 // import uifeatures from './uifeatures'
 // import components from './components'
 // import tables from './tables'
@@ -21,6 +21,7 @@ const state = {
       },
       component: lazyLoading('dashboard', true)
     },
+    charts,
     reports/* ,
     {
       name: 'Axios',
@@ -32,7 +33,6 @@ const state = {
       },
       component: lazyLoading('axios', true)
     },
-    charts,
     uifeatures,
     components,
     tables */
