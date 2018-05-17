@@ -22,11 +22,12 @@ export default {
 
       children: [
         {
-          name: '报表列表',
+          name: 'List',
           path: 'list',
           component: lazyLoading('reports/designer/List'),
           meta: {
-            link: 'reports/designer/List.vue'
+            link: 'reports/designer/List.vue',
+            label: '报表列表'
           }
         },
         {
@@ -36,6 +37,34 @@ export default {
           meta: {
             link: 'reports/designer/Add.vue'
           }
+        },
+        {
+          name: 'Edit',
+          path: 'edit/:id',
+          component: lazyLoading('reports/designer/Edit'),
+          redirect: { name: 'Conditions' },
+          meta: {
+            link: 'reports/designer/Edit.vue',
+            label: '编辑报表'
+          },
+          children: [
+            {
+              name: 'Conditions',
+              path: 'conds',
+              component: lazyLoading('reports/designer/edit/Conditions'),
+              meta: {
+                label: '条件设置'
+              }
+            },
+            {
+              name: 'Dimensions',
+              path: 'dimens',
+              component: lazyLoading('reports/designer/edit/Dimensions'),
+              meta: {
+                label: '维度设置'
+              }
+            }
+          ]
         }
       ]
     }

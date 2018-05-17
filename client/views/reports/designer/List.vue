@@ -31,7 +31,8 @@
                   <th>创建人</th>
                   <th>创建时间</th>
                   <th>状态</th>
-                  <th style="width: 140px;">操作</th>
+                  <th style="width: 70px;" class="has-text-centered">编辑</th>
+                  <th style="width: 70px;" class="has-text-centered">删除</th>
                 </tr>
               </thead>
               <tbody>
@@ -45,33 +46,23 @@
                     {{ report.status === 0 ? '草稿' : report.status === 1 ? '已发布' : '' }}
                     </span>
                   </td>
-                  <td>
-                    <a class="button is-small is-primary">
+                  <td class="has-text-centered">
+                    <router-link :to="{ name: 'Edit', params: { id: report.id } }" class="button is-small is-primary">
                       <span class="icon is-small"><i class="fa fa-edit"></i></span>
                       <span>编辑</span>
-                    </a>
-                    <a class="button is-small is-danger">
+                    </router-link>
+                  </td>
+                  <td class="has-text-centered">
+                    <button class="button is-small is-danger" @click="deleteReport(report)">
                       <span class="icon is-small"><i class="fa fa-times"></i></span>
                       <span>删除</span>
-                    </a>
+                    </button>
                   </td>
                 </tr>
               </tbody>
             </table>
-            <nav class="pagination is-right is-small" role="navigation" aria-label="pagination">
-              <a class="pagination-previous">Previous</a>
-              <a class="pagination-next">Next page</a>
-              <ul class="pagination-list">
-                <li><a class="pagination-link" aria-label="Goto page 1">1</a></li>
-                <li><span class="pagination-ellipsis">&hellip;</span></li>
-                <li><a class="pagination-link" aria-label="Goto page 45">45</a></li>
-                <li><a class="pagination-link is-current" aria-label="Page 46" aria-current="page">46</a></li>
-                <li><a class="pagination-link" aria-label="Goto page 47">47</a></li>
-                <li><span class="pagination-ellipsis">&hellip;</span></li>
-                <li><a class="pagination-link" aria-label="Goto page 86">86</a></li>
-              </ul>
-            </nav>
           </div>
+          <pagination></pagination>
         </article>
       </div>
     </div>
@@ -79,12 +70,23 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex'
+import { mapGetters, mapActions } from 'vuex'
+import { Pagination } from '../../../components/bulma'
 
 export default {
+  components: {
+    Pagination
+  },
+
   computed: mapGetters({
     reports: 'reports'
-  })
+  }),
+
+  methods: {
+    ...mapActions([
+      'deleteReport'
+    ])
+  }
 }
 </script>
 

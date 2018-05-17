@@ -9,27 +9,49 @@
             </div>
           </div>
           <div class="level-right">
-            <div class="level-item">
+             <div class="level-item">
               <div class="control has-addons is-right">
-                <router-link :to="'add'" class="button is-success is-small">
+                <button class="button is-success is-small is-outlined" @click="addReport(report)">
                   <span class="icon is-small">
                     <i class="fa fa-save"></i>
                   </span>
-                  <span @click="addReport(report)">保存</span>
-                </router-link>
+                  <span>保存</span>
+                </button>
+              </div>
+            </div>
+            <div class="level-item">
+              <div class="control has-addons is-right">
+                <button class="button is-danger is-small is-outlined" @click="cancel()">
+                  <span class="icon is-small">
+                    <i class="fa fa-times"></i>
+                  </span>
+                  <span>取消</span>
+                </button>
               </div>
             </div>
           </div>
         </nav>
 
         <div class="field is-horizontal">
-          <div class="field-label is-small">
+          <div class="field-label is-normal">
             <label class="label">标题：</label>
           </div>
           <div class="field-body">
             <div class="field">
               <div class="control">
-                <input v-model="report.name" class="input is-small" type="text" placeholder="Small sized input">
+                <input v-model="report.name" class="input" type="text">
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="field is-horizontal">
+          <div class="field-label is-normal">
+            <label class="label">描述：</label>
+          </div>
+          <div class="field-body">
+            <div class="field">
+              <div class="control">
+                <textarea class="textarea" v-model="report.desc"></textarea>
               </div>
             </div>
           </div>
@@ -50,13 +72,14 @@ export default {
   },
 
   methods: {
-    // ...mapActions([
-    //   'addReport'
-    // ])
     addReport (report) {
       this.$store.dispatch('addReport', report).then(() => {
         this.$router.go(-1)
       })
+    },
+
+    cancel () {
+      this.$router.go(-1)
     }
   }
 }
