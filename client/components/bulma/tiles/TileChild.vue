@@ -1,5 +1,5 @@
 <template>
-  <article class="tile is-child" :class="[box ? 'box' : '', notification ? 'notification is-' + notification : '']">
+  <article class="tile is-child" :class="classObject">
     <p v-if="hasTitle" class="title">{{ title }}</p>
     <p v-if="hasSubTitle" class="subtitle">{{ subTitle }}</p>
     <div class="content">
@@ -11,25 +11,21 @@
 <script>
 export default {
   props: {
-    title: {
-      type: String,
-      default: ''
-    },
-    subTitle: {
-      type: String,
-      default: ''
-    },
-    box: {
-      type: Boolean,
-      default: false
-    },
-    notification: {
-      type: String,
-      default: ''
-    }
+    title: String,
+    subTitle: String,
+    boxed: Boolean,
+    type: String
   },
 
   computed: {
+    classObject () {
+      const { boxed, type } = this
+      return {
+        [`notification is-${type}`]: type,
+        'box': boxed
+      }
+    },
+
     hasTitle () {
       return !!this.title
     },

@@ -9,3 +9,5 @@ export Pagination from './Pagination'
 export { Tabs } from './tabs'
 
 export { TileParent, TileChild, Tile } from './tiles'
+
+export VbSwitch from './Switch'
