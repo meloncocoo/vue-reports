@@ -67,6 +67,14 @@ export default {
           ]
         }
       ]
+    },
+    {
+      name: '查询',
+      path: 'query',
+      component: lazyLoading('reports/query', true),
+      meta: {
+        link: 'reports/query/index.vue'
+      }
     }
   ]
 }

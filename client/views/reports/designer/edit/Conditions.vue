@@ -85,7 +85,7 @@ export default {
 
   beforeMount () {
     this.conditions.map((item) => {
-      item.selected = !this.selected.map((selected) => item.id === selected.id )
+      item.selected = !this.selected.map((selected) => item.id === selected.id)
     })
   },
 
