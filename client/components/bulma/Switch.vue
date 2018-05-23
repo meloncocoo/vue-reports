@@ -35,8 +35,7 @@ export default {
 
   methods: {
     handleChange (event) {
-      this.value = event.target.checked
-      this.$emit('input', this.value)
+      this.$emit('input', event.target.checked)
     }
   }
 }

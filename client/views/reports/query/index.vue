@@ -10,7 +10,10 @@
     </tile-parent>
     <tile-parent>
       <tile-child boxed>
-        <vb-switch type="warning" size="" :value="value"></vb-switch>
+        <dropdown :label="'Selection...'" :items="dropdownItems" :value="dValue" v-on:selected="onSelected"></dropdown>
+        <p>
+          Selection Value: {{ dValue }}
+        </p>
       </tile-child>
     </tile-parent>
     <tile-parent>
@@ -22,25 +25,37 @@
 </template>
 
 <script>
-import { Tile, TileParent, TileChild, VbSwitch } from '../../../components/bulma'
+import { Tile, TileParent, TileChild, VbSwitch, Dropdown } from '../../../components/bulma'
 
 export default {
   components: {
     Tile,
     TileParent,
     TileChild,
-    VbSwitch
+    VbSwitch,
+    Dropdown
   },
 
   data () {
     return {
-      value: false
+      value: false,
+      dValue: 2,
+      dropdownItems: [
+        { value: 1, type: 'link', label: 'Dropdown item' },
+        { value: 2, type: 'link', label: 'Other dropdown item' },
+        { value: 3, type: 'link', label: 'Active dropdown item' },
+        { value: 4, type: 'link', label: 'Other dropdown item' },
+        { type: 'divider' },
+        { value: 5, type: 'link', label: 'With a divider' }
+      ]
     }
   },
 
-  watch: {
-    value () {
-      window.alert(this.value)
+  methods: {
+    onSelected (item) {
+      if (item && item.value) {
+        this.dValue = item.value
+      }
     }
   }
 }

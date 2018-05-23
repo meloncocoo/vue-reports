@@ -4,6 +4,8 @@ export Chart from './Chartjs'
 
 export Chartist from './Chartist'
 
+export { Dropdown } from './dropdowns'
+
 export Pagination from './Pagination'
 
 export { Tabs } from './tabs'
